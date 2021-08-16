@@ -31,7 +31,7 @@ const Home = ({ navigation }) => {
     };
 
     const handleComment = ({ index, comment }) => {
-        setData([...data.slice(0, index), { ...data[index], commentlist: data[index].commentList.unshift(comment) }, ...data.slice(index + 1)]);
+        setData([...data.slice(0, index), { ...data[index], comment: data[index].comment + 1, commentlist: data[index].commentList.unshift(comment) }, ...data.slice(index + 1)]);
 
     };
 
