@@ -6,7 +6,6 @@ import { WebView } from 'react-native-webview';
 const Web = ({ route, navigation }) => {
     const ARTICLE_URI = route.params.ARTICLE_URI;
     console.log(ARTICLE_URI);
-    const [isLoading, setIsLoading] = useState(true);
     const LoadingView = () => {
         return <ActivityIndicator color='#24250E' size='large' />;
     };
@@ -23,11 +22,10 @@ const Web = ({ route, navigation }) => {
 
 
 const styles = StyleSheet.create({
-    // container: {
-    //     // flex: 1,
-    //     height: '100%',
-    //     width: '100%',
-    // },
+    container: {
+        alignSelf: 'stretch',
+        flex: 1,
+    },
 });
 
 export default Web;
