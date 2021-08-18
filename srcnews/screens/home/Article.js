@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements';
-import { WebView } from 'react-native-webview';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Card } from 'react-native-elements';
 
 const Article = ({ navigation, item, index, handleRead, read }) => {
     const ARTICLE_URI = item.url;
     const handleWeb = () => {
         if (!read[index]) {
-            navigation.navigate('Web', { ARTICLE_URI })
+            navigation.navigate('Web', { ARTICLE_URI });
         }
         handleRead(index);
     };
@@ -33,9 +32,9 @@ const Article = ({ navigation, item, index, handleRead, read }) => {
 
 const styles = StyleSheet.create({
     bodyText: {
-        marginBottom: 5
-    }
-})
+        marginBottom: 5,
+    },
+});
 
 const unReadS = StyleSheet.create({
     baseContainer: {
@@ -44,7 +43,7 @@ const unReadS = StyleSheet.create({
     statusText: {
         color: '#37320C',
         textAlign: 'right',
-        fontSize: 16
+        fontSize: 16,
     },
 });
 
@@ -55,7 +54,7 @@ const readS = StyleSheet.create({
     statusText: {
         color: '#11110E',
         textAlign: 'right',
-        fontSize: 16
+        fontSize: 16,
     },
 });
 

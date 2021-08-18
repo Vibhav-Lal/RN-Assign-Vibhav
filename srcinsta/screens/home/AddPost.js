@@ -11,7 +11,7 @@ const AddPost = ({ route, navigation }) => {
         }
         else {
             postImage(imageSource);
-            navigation.navigate('Home');
+            navigation.navigate('insta-home');
         }
     };
 

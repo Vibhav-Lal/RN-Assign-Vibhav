@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableHighlight, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TextInput, Button, StyleSheet } from 'react-native';
 import data from './../../data/data';
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     const [newToDo, setNewToDo] = useState({
         id: toDo.length + 1,
         body: '',
-        status: false
+        status: false,
     });
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const Home = () => {
     const changeStatus = (id) => {
         const newToDoList = toDo.map(item => (item.id === id ? { ...item, status: !item.status } : item));
         setToDo(newToDoList);
-    }
+    };
 
     const renderItem = (ele) => {
         return (
@@ -35,7 +35,7 @@ const Home = () => {
             alert('Empty input');
             return;
         }
-        setToDo([newToDo, ...toDo,]);
+        setToDo([newToDo, ...toDo]);
         setNewToDo({
             id: 0,
             body: '',
@@ -44,7 +44,7 @@ const Home = () => {
 
     };
     return (
-        <View>
+        <View style={styles.sectionContainer}>
             <TextInput
                 label="New Todo"
                 placeholder="New Todo"
@@ -80,13 +80,16 @@ const styles = StyleSheet.create({
     },
     toDoDone: {
         fontSize: 20,
-        textDecorationLine: 'line-through'
+        textDecorationLine: 'line-through',
     },
     markDone: {
         color: '#0E7BF5',
-        textAlign: 'right'
-    }
-})
-
+        textAlign: 'right',
+    },
+    sectionContainer: {
+        marginTop: 32,
+        paddingHorizontal: 24,
+    },
+});
 
 export default Home;

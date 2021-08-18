@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableHighlight, TextInput, Button, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import Child from './Child';
 
 const Parent = () => {
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
     baseContainer: {
         padding: 5,
         marginTop: 10,
-        backgroundColor: '#D8E7F7'
+        backgroundColor: '#D8E7F7',
     },
     parentContainer: {
         backgroundColor: '#C3DAF3',
-        padding: 5
-    }
-})
+        padding: 5,
+    },
+});
 
 export default Parent;

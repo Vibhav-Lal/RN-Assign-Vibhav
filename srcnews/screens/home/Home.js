@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     },
     loadingText: {
         fontSize: 40,
-        fontFamily: 'serif'
-    }
-})
+        fontFamily: 'serif',
+    },
+});
 
 export default Home;
