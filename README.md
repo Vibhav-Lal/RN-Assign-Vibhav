@@ -1,5 +1,11 @@
 # RN-Assign-Vibhav
 
+To start the app on AVD:
+
+```
+npm i
+npx react-native run-android
+```
 Source (starting) files for below apps :  
 1. ToDo App -> App
 2. Parent Child Com -> AppPc
