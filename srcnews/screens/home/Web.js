@@ -5,7 +5,6 @@ import { WebView } from 'react-native-webview';
 
 const Web = ({ route, navigation }) => {
     const ARTICLE_URI = route.params.ARTICLE_URI;
-    console.log(ARTICLE_URI);
     const LoadingView = () => {
         return <ActivityIndicator color='#24250E' size='large' />;
     };
