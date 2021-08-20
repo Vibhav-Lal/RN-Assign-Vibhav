@@ -45,42 +45,42 @@ const AddPost = ({ addImage, navigation }) => {
     return (
         <View
             style={[
-                STYLES.flex,
-                STYLES.centerContainer,
+                styles.flex,
+                styles.centerContainer,
             ]}
         >
-            <View style={STYLES.imageContainer}>
+            <View style={styles.imageContainer}>
                 {imageSource === null ? (
                     <Image
                         source={require('./../../data/place.png')}
-                        style={STYLES.imageBox}
+                        style={styles.imageBox}
                         resizeMode="contain"
                     />
                 ) : (
                     <Image
                         source={{ uri: imageSource }}
-                        style={STYLES.imageBox}
+                        style={styles.imageBox}
                         resizeMode="contain"
                     />
                 )}
             </View>
             <TouchableOpacity
                 onPress={selectImage}
-                style={STYLES.selectButtonContainer}
+                style={styles.selectButtonContainer}
             >
-                <Text style={STYLES.selectButtonTitle}>Pick an image</Text>
+                <Text style={styles.selectButtonTitle}>Pick an image</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={postImage}
-                style={STYLES.selectButtonContainer}
+                style={styles.selectButtonContainer}
             >
-                <Text style={STYLES.selectButtonTitle}>Post</Text>
+                <Text style={styles.selectButtonTitle}>Post</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-const STYLES = StyleSheet.create({
+const styles = StyleSheet.create({
     flex: {
         flex: 1,
     },
@@ -88,7 +88,6 @@ const STYLES = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    // add below
     selectButtonContainer: {
         margin: 20,
         borderRadius: 5,
@@ -109,8 +108,8 @@ const STYLES = StyleSheet.create({
 });
 
 const mapDispatchToProps = dispatch => ({
-    addImage: payload => dispatch(addImage(payload))
-})
+    addImage: payload => dispatch(addImage(payload)),
+});
 
 
 export default connect(null, mapDispatchToProps)(AddPost);
