@@ -3,7 +3,6 @@ import { postData } from '../store/postData';
 export const posts = (state = postData, action) => {
     switch (action.type) {
         case 'ADD_IMAGE':
-            console.log(action.payload.path);
             state.unshift({
                 image: { uri: action.payload.path },
                 like: 0,
