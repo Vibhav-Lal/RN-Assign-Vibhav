@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { connect } from 'react-redux';
+import { addImage } from '../../redux/actions/addImage';
 
-const AddPost = ({ route, navigation }) => {
-    const { postImage } = route.params;
+const AddPost = ({ addImage, navigation }) => {
     const [imageSource, setImageSource] = useState(null);
-    const addImage = () => {
+    const postImage = () => {
         if (imageSource === null) {
             alert('No image selected');
         }
         else {
-            postImage(imageSource);
+            addImage({ imageSource });
             navigation.navigate('insta-home');
         }
     };
@@ -70,7 +71,7 @@ const AddPost = ({ route, navigation }) => {
                 <Text style={STYLES.selectButtonTitle}>Pick an image</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={addImage}
+                onPress={postImage}
                 style={STYLES.selectButtonContainer}
             >
                 <Text style={STYLES.selectButtonTitle}>Post</Text>
@@ -107,4 +108,9 @@ const STYLES = StyleSheet.create({
     },
 });
 
-export default AddPost;
+const mapDispatchToProps = dispatch => ({
+    addImage: payload => dispatch(addImage(payload))
+})
+
+
+export default connect(null, mapDispatchToProps)(AddPost);

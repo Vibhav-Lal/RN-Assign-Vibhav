@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TextInput, Button, StyleSheet } from 'react-native';
 import data from './../../data/data';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const Home = () => {
 
     const [toDo, setToDo] = useState(data);
@@ -25,7 +25,9 @@ const Home = () => {
             <View style={styles.toDoItem}>
                 <View style={styles.toDoView}>
                     <Text style={ele.item.status ? styles.toDoDone : styles.toDoText}>{ele.item.body}</Text>
-                    <Text style={styles.markDone} onPress={() => changeStatus(ele.item.id)}>{ele.item.status ? 'Redo' : 'Done'}</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.markDone} onPress={() => changeStatus(ele.item.id)}>{ele.item.status ? 'Redo' : 'Done'}</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );

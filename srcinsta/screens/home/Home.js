@@ -3,36 +3,17 @@ import { View, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import CardPost from './../../components/CardPost';
 import { Icon } from 'react-native-elements';
+import { addLike } from '../../redux/actions/addLike';
+import { addComment } from '../../redux/actions/addComment';
+import { connect } from 'react-redux';
 
-const Home = ({ navigation }) => {
-    const list = [
-        {
-            image: require('./../../data/a1pha.png'),
-            like: 5,
-            comment: 2,
-            commentList: ['nice', 'this is a comment'],
-        },
-        {
-            image: require('./../../data/image2.jpg'),
-            like: 3,
-            comment: 1,
-            commentList: ['John Wick'],
-        },
-        {
-            image: require('./../../data/bike.jpg'),
-            like: 10,
-            comment: 2,
-            commentList: ['RE', 'Superb'],
-        },
-    ];
-    const [data, setData] = useState(list);
+const Home = ({ data, addComment, addLike, navigation }) => {
     const handleLike = (index) => {
-        setData([...data.slice(0, index), { ...data[index], like: data[index].like + 1 }, ...data.slice(index + 1)]);
+        addLike(index);
     };
 
     const handleComment = ({ index, comment }) => {
-        setData([...data.slice(0, index), { ...data[index], comment: data[index].comment + 1, commentlist: data[index].commentList.unshift(comment) }, ...data.slice(index + 1)]);
-
+        addComment({ index, comment });
     };
 
     const renderItem = ({ item, index }) => {
@@ -41,17 +22,8 @@ const Home = ({ navigation }) => {
         );
     };
 
-    const postImage = (imageURI) => {
-        console.log(imageURI);
-        setData([{
-            image: { uri: imageURI },
-            like: 0,
-            comment: 0,
-            commentList: [],
-        }, ...data]);
-    };
     const addNewPost = () => {
-        navigation.navigate('AddPost', { postImage: postImage });
+        navigation.navigate('AddPost');
     };
     return (
         <View style={styles.bodyContainer}>
@@ -83,4 +55,15 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        data: state.posts,
+    };
+};
+
+const mapDispatchToProps = dispatch => ({
+    addLike: payload => dispatch(addLike(payload)),
+    addComment: payload => dispatch(addComment(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

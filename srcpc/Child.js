@@ -13,7 +13,10 @@ const Child = ({ name, handleChange }) => {
                 onChangeText={text => setNewName(text)}
                 value={newName}
             />
-            <Button title="Request" onPress={() => handleChange(newName)} />
+            <Button title="Request" onPress={() => {
+                handleChange(newName);
+                setNewName('');
+            }} />
         </View>
     );
 };
